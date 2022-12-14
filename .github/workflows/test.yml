@@ -15,6 +15,11 @@ jobs:
         run: echo "tag=`git describe --tags`" >> $GITHUB_ENV
         shell: bash
 
+      - name: Build
+        run: |
+          npm install
+          npm run build
+
       - name: Test 1
         uses: ./
         id: test1
