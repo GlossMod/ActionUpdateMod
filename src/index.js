@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const fetch = require("node-fetch");
 const FormData = require("form-data");
-const fs = require("fs")
+const fs = require("fs");
 const Options = require("./options");
 const package = require("./package");
 
@@ -10,6 +10,7 @@ const API_ENDPOINT = "https://mod.3dmgame.com/api/UpModData";
 async function main() {
   try {
     const options = new Options();
+    if (options.test) console.log("Running in test mode.");
 
     const modInfo = {
       id: options.id,
@@ -31,10 +32,15 @@ async function main() {
     }
 
     if (options.test) {
+      console.log(
+        "Running in test mode, finishing without connecting to API."
+      );
       core.setOutput("code", "00");
       core.setOutput("msg", "更新成功");
       return;
     }
+
+    console.log("Contecting to the API.");
 
     let response = await fetch(API_ENDPOINT, {
       method: "POST",
@@ -50,6 +56,8 @@ async function main() {
 
     if (data.code != 00)
       throw Error(`API responded with code: ${data.code}, ${data.msg}`);
+
+    console.log(`API responded with: ${data.code}, ${data.msg}`);
 
     core.setOutput("code", data.code);
     core.setOutput("msg", data.msg);
