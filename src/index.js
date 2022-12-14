@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const fetch = require("node-fetch");
+const FormData = require("form-data");
 const Options = require("./options");
 const package = require("./package");
 
