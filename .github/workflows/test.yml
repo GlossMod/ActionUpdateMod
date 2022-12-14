@@ -4,6 +4,9 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: 
+      name: deploy
+      url: https://mod.3dmgame.com/mod/174709
     steps:
       - name: Checkout
         uses: actions/checkout@v3
