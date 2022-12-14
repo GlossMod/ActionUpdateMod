@@ -1,10 +1,13 @@
-name: Release
+name: Update README
 on: 
-  release:
-    types: [published]
+  push:
+    branchees:
+      - 'master'
+    paths:
+      - 'README.md'
 
 jobs:
-  release:
+  update:
     runs-on: ubuntu-latest
     environment: 
       name: deploy
@@ -13,20 +16,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Get latest tag
-        run: echo "tag=`git describe --tags`" >> $GITHUB_ENV
-        shell: bash
-
-      - name: Update information
+      - name: Update README
         uses: ./
         id: update
         with:
           APPID: ${{ secrets.APPID }}
           APPKEY: ${{ secrets.APPKEY }}
           id: 174709
-          version: ${{ env.tag }}
           content: README.md
-          file: README.md
 
       - name: Print the response from the API
         run: "echo 'Code: ${{ steps.update.outputs.code }}\tMessage: ${{ steps.update.outputs.msg }}'"
