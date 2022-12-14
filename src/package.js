@@ -30,10 +30,10 @@ function package(aFilePath, aOutputPath) {
       if (err) throw err;
     });
 
-    console.log(`The file option is an archive file. Will upload directly.`)
     return aOutputPath;
   }
-
+  
+  console.log(`The file option is an archive file. Will upload directly.`)
   return aFilePath;
 }
 

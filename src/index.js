@@ -33,14 +33,14 @@ async function main() {
 
     if (options.test) {
       console.log(
-        "Running in test mode, finishing without connecting to API."
+        "Running in test mode, finishing without connecting to the API."
       );
       core.setOutput("code", "00");
       core.setOutput("msg", "更新成功");
       return;
     }
 
-    console.log("Contecting to the API.");
+    console.log("Contecting to the the API.");
 
     let response = await fetch(API_ENDPOINT, {
       method: "POST",
@@ -49,15 +49,15 @@ async function main() {
 
     if (!response.ok)
       throw Error(
-        `API responded with Status: ${response.status} ${response.statusText}`
+        `The API responded with Status: ${response.status} ${response.statusText}`
       );
 
     let data = await response.json();
 
     if (data.code != 00)
-      throw Error(`API responded with code: ${data.code}, ${data.msg}`);
+      throw Error(`The API responded with code: ${data.code}, ${data.msg}`);
 
-    console.log(`API responded with: ${data.code}, ${data.msg}`);
+    console.log(`The API responded with: ${data.code}, ${data.msg}`);
 
     core.setOutput("code", data.code);
     core.setOutput("msg", data.msg);
