@@ -9,6 +9,8 @@
 
 你可以设置在 Github 上发布 Release 时，自动上传最新版的 Release 文件到 3DM Mod 站上，同时也可以更新 Mod 的各种信息。
 
+可以参考[API文档](https://mod.3dmgame.com/api)了解详情。
+
 [原项目](https://github.com/Nats-ji/3dm-release-action)由于使用的是 python 编写，受 github 的限制只能运行于 linux 环境。现在这个可以运行在任何环境。
 
 ### 示例 Workflow 文件
