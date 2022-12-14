@@ -1,0 +1,57 @@
+name: 'Update 3dm Mod'
+description: 'Update your mods on 3DM Mods.'
+branding:
+  icon: 'upload-cloud'
+  color: 'yellow'
+inputs:
+  appid:
+    description: 'APPID'
+    required: true
+
+  appkey:
+    description: 'APPKEY'
+    required: true
+
+  id:
+    description: 'ModID'
+    required: true
+  
+  title:
+    description: 'Mod title'
+    required: false
+
+  tags:
+    description: 'Mod tags'
+    required: false
+
+  version:
+    description: 'Mod version'
+    required: false
+
+  desc:
+    description: 'Mod description'
+    required: false
+
+  content:
+    description: 'Mod content'
+    required: false
+
+  file:
+    description: 'Path to file or folder to upload. Will create a zip file if pointed to folder.'
+    required: false
+
+  test:
+    description: 'Test run without sending request to thee api.'
+    required: false
+    default: false
+
+outputs:
+  code:
+    description: 'Response code from the API'
+  
+  msg:
+    description: 'Response message from the API'
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

@@ -1,0 +1,27 @@
+name: Test
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Get latest tag
+        run: echo "tag=`git describe --tags`" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Test Upload Mod
+        uses: ./
+        id: test
+        with:
+          APPID: ${{ secrets.APPID }}
+          APPKEY: ${{ secrets.APPKEY }}
+          id: 174709
+          version: ${{ env.tag }}
+          content: README.md
+          file: README.md
+
+      - name: Print the response from the API
+        run: "echo 'Code: ${{ steps.test.outputs.code }}\tMessage: ${{ steps.test.outputs.msg }}'"
