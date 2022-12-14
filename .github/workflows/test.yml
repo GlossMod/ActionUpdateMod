@@ -2,7 +2,7 @@ name: Test
 on:
   push:
     paths-ignore:
-      - 'README.md'
+      - "README.md"
 
 jobs:
   test:
@@ -27,11 +27,13 @@ jobs:
           APPID: 1234
           APPKEY: 1234
           id: 174709
+          title: My Mod
+          tags: mod, trainer, interface
           version: ${{ env.tag }}
+          desc: my test mod
           content: README.md
           file: README.md
           test: true
-
       - name: Print the response from Test 1
         run: "echo 'Code: ${{ steps.test1.outputs.code }}\tMessage: ${{ steps.test1.outputs.msg }}'"
 
@@ -42,8 +44,22 @@ jobs:
           APPID: 1234
           APPKEY: 1234
           id: 174709
+          content: |
+            # Introduction
+            - It's a mod
+            - It adds new weapons to the game.
           file: dist/
           test: true
-
       - name: Print the response from Test 2
         run: "echo 'Code: ${{ steps.test2.outputs.code }}\tMessage: ${{ steps.test2.outputs.msg }}'"
+
+      - name: Test 3
+        uses: ./
+        id: test3
+        with:
+          APPID: 1234
+          APPKEY: 1234
+          id: 174709
+          test: true
+      - name: Print the response from Test 3
+        run: "echo 'Code: ${{ steps.test3.outputs.code }}\tMessage: ${{ steps.test3.outputs.msg }}'"
