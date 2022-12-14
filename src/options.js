@@ -23,7 +23,7 @@ class Options {
     this.desc = core.getInput("desc") || null;
     this.content = this.#loadContent(core.getInput("content")) || null;
     this.file = core.getInput("file") || null;
-    if (!fs.existsSync(this.file))
+    if (this.file && !fs.existsSync(this.file))
       throw Error(`Mod file/folder ${this.file} does not exist.`);
     this.test = core.getBooleanInput("test");
   }
