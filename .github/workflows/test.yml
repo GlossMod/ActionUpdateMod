@@ -12,9 +12,9 @@ jobs:
         run: echo "tag=`git describe --tags`" >> $GITHUB_ENV
         shell: bash
 
-      - name: Test Upload Mod
+      - name: Test 1
         uses: ./
-        id: test
+        id: test1
         with:
           APPID: 1234
           APPKEY: 1234
@@ -24,5 +24,18 @@ jobs:
           file: README.md
           test: true
 
-      - name: Print the response from the API
-        run: "echo 'Code: ${{ steps.test.outputs.code }}\tMessage: ${{ steps.test.outputs.msg }}'"
+      - name: Print the response from Test 1
+        run: "echo 'Code: ${{ steps.test1.outputs.code }}\tMessage: ${{ steps.test1.outputs.msg }}'"
+
+      - name: Test 2
+        uses: ./
+        id: test2
+        with:
+          APPID: 1234
+          APPKEY: 1234
+          id: 174709
+          file: dist/
+          test: true
+
+      - name: Print the response from Test 2
+        run: "echo 'Code: ${{ steps.test2.outputs.code }}\tMessage: ${{ steps.test2.outputs.msg }}'"
