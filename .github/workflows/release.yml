@@ -1,9 +1,15 @@
-name: Test
-on: [push]
+name: Release
+on: 
+  release:
+    types: [published]
+  workflow_dispatch:
 
 jobs:
-  test:
+  release:
     runs-on: ubuntu-latest
+    environment: 
+      name: deploy
+      url: https://mod.3dmgame.com/mod/174709
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -12,17 +18,16 @@ jobs:
         run: echo "tag=`git describe --tags`" >> $GITHUB_ENV
         shell: bash
 
-      - name: Test Upload Mod
+      - name: Update information
         uses: ./
-        id: test
+        id: update
         with:
-          APPID: 1234
-          APPKEY: 1234
+          APPID: ${{ secrets.APPID }}
+          APPKEY: ${{ secrets.APPKEY }}
           id: 174709
           version: ${{ env.tag }}
           content: README.md
           file: README.md
-          test: true
 
       - name: Print the response from the API
-        run: "echo 'Code: ${{ steps.test.outputs.code }}\tMessage: ${{ steps.test.outputs.msg }}'"
+        run: "echo 'Code: ${{ steps.update.outputs.code }}\tMessage: ${{ steps.update.outputs.msg }}'"
