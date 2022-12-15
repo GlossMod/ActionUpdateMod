@@ -1,7 +1,7 @@
 name: Update README
 on: 
   push:
-    branchees:
+    branches:
       - 'master'
     paths:
       - 'README.md'
