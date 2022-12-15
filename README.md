@@ -98,7 +98,7 @@ steps:
 
 [github-badge]: https://img.shields.io/badge/sorce-Github-blue?style=social&logo=github
 [github-link]: https://github.com/GlossMod/ActionUpdateMod
-[test-badge]: https://img.shields.io/github/workflow/status/GlossMod/ActionUpdateMod/Test?label=test
+[test-badge]: https://img.shields.io/github/actions/workflow/status/GlossMod/ActionUpdateMod/test.yml?branch=master&label=test
 [test-link]: https://github.com/GlossMod/ActionUpdateMod/actions/workflows/test.yml
 [license-badge]: https://img.shields.io/github/license/GlossMod/ActionUpdateMod
 [release-badge]: https://img.shields.io/github/v/release/GlossMod/ActionUpdateMod?include_prereleases
