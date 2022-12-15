@@ -1,4 +1,5 @@
 # Action Update Mod
+
 [![github][github-badge]][github-link] [![test][test-badge]][test-link] ![license][license-badge] [![version][release-badge]][release-link] [![market][market-badge]][market-link] [![3dm][3dm-badge]][3dm-link]
 
 ## 简介
@@ -9,7 +10,7 @@
 
 你可以设置在 Github 上发布 Release 时，自动上传最新版的 Release 文件到 3DM Mod 站上，同时也可以更新 Mod 的各种信息。
 
-可以参考[API文档](https://mod.3dmgame.com/api)了解详情。
+可以参考[API 文档](https://mod.3dmgame.com/api)了解详情。
 
 [原项目](https://github.com/Nats-ji/3dm-release-action)由于使用的是 python 编写，受 github 的限制只能运行于 linux 环境。现在这个可以运行在任何环境。
 
@@ -56,7 +57,8 @@ jobs:
 | `test` (可选)      | 是否测试运行，不与 API 通讯                                                                        | false                                                   |
 
 ### 注意
-不要直接在你的workflow文件里输入你的`appid`和`appkey`。应将他们存放于你项目仓库的secret里后，使用`${{ secrets.APPID }}`，`${{ secrets.APPKEY }}`等调用。
+
+不要直接在你的 workflow 文件里输入你的`appid`和`appkey`。应将他们存放于你项目仓库的 secret 里后，使用`${{ secrets.APPID }}`，`${{ secrets.APPKEY }}`等调用。
 
 ## 输出
 
@@ -80,8 +82,8 @@ steps:
         content: README.md
         file: build/windows/myMod.asi
 
-- name: echo上一步的输出
-    run: echo "API返回的状态码：${{ steps.update_mod.outputs.code }}，返回消息：${{ steps.update_mod.outputs.msg }}"
+  - name: echo上一步的输出
+      run: echo "API返回的状态码：${{ steps.update_mod.outputs.code }}，返回消息：${{ steps.update_mod.outputs.msg }}"
 ```
 
 ## 贡献
