@@ -54,6 +54,7 @@ jobs:
 | `desc` （可选）    | Mod 的简单描述                                                                                     | 我的超强修改器 Mod                                      |
 | `content` （可选） | Mod 的介绍正文的 Markdown 文件路径或者 Markdown 代码                                               | README.md                                               |
 | `file` （可选）    | Mod 文件路径（大小限制: 10mb），如果文件路径非`zip/rar/7z`格式将会自动打包后上传（支持文件夹打包） | `build/windows/x64/helloworld.asi`,<br>`package/mymod/` |
+| `zip-only` (可选)  | 只打包 Mod 文件而不上传                                                                            | false                                                   |
 | `test` (可选)      | 是否测试运行，不与 API 通讯                                                                        | false                                                   |
 
 ### 注意
@@ -62,10 +63,11 @@ jobs:
 
 ## 输出
 
-| 输出   | 描述     |
-| ------ | -------- |
-| `code` | 状态码   |
-| `msg`  | 返回消息 |
+| 输出   | 描述             |
+| ------ | ---------------- |
+| `code` | 状态码           |
+| `msg`  | 返回消息         |
+| `file` | 打包后的文件路径 |
 
 ### 如何使用输出
 

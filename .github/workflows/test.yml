@@ -49,9 +49,10 @@ jobs:
             - It's a mod
             - It adds new weapons to the game.
           file: dist/
+          zip-only: true
           test: true
       - name: Print the response from Test 2
-        run: "echo 'Code: ${{ steps.test2.outputs.code }}\tMessage: ${{ steps.test2.outputs.msg }}'"
+        run: "echo 'Code: ${{ steps.test2.outputs.code }}\tMessage: ${{ steps.test2.outputs.msg }}\nFile: ${{ steps.test2.outputs.file }}'"
 
       - name: Test 3
         uses: ./

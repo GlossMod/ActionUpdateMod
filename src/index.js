@@ -28,7 +28,10 @@ async function main() {
 
     if (options.file) {
       const filePath = package(options.file, options.outputPath);
-      bodyContent.append("file", fs.createReadStream(filePath));
+      core.setOutput("file", filePath);
+
+      if (!options.zipOnly)
+        bodyContent.append("file", fs.createReadStream(filePath));
     }
 
     if (options.test) {
