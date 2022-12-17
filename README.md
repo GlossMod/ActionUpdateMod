@@ -53,7 +53,7 @@ jobs:
 | `version` （可选） | Mod 的版本号                                                                                       | v1.2.5                                                  |
 | `desc` （可选）    | Mod 的简单描述                                                                                     | 我的超强修改器 Mod                                      |
 | `content` （可选） | Mod 的介绍正文的 Markdown 文件路径或者 Markdown 代码                                               | README.md                                               |
-| `file` （可选）    | Mod 文件路径（大小限制: 10mb），如果文件路径非`zip/rar/7z`格式将会自动打包后上传（支持文件夹打包） | `build/windows/x64/helloworld.asi`,<br>`package/mymod/` |
+| `file` （可选）    | Mod 文件路径（大小限制: 10mb），如果文件路径非`zip/rar/7z`格式将会自动打包后上传（支持文件夹打包）<br>如需上传超过10mb的文件可以串联 [Nats-ji/Action3DMLargeFileUpload](https://github.com/Nats-ji/Action3DMLargeFileUpload) 进行上传 | `build/windows/x64/helloworld.asi`,<br>`package/mymod/` |
 | `zip-only` (可选)  | 只打包 Mod 文件而不上传                                                                            | false                                                   |
 | `test` (可选)      | 是否测试运行，不与 API 通讯                                                                        | false                                                   |
 
